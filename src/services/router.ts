@@ -12,6 +12,7 @@ import type { Config } from '../config';
 export interface Status {
     chainId: number;
     localBlock: number;
+    savedBlocks: number;
     onSync: boolean;
     errors: ErrorTypes[];
 }
@@ -21,17 +22,21 @@ export async function handleStatus(router: Router, reply: FastifyReply) {
         config: { chainId },
     } = router;
 
-    const { localBlock, onSync, errors } = await sendMessage<{
-        localBlock: number;
-        onSync: boolean;
-        errors: ErrorTypes[];
-    }>(router, { type: 'status' });
+    const [{ localBlock, onSync, errors }, savedBlocks] = await Promise.all([
+        sendMessage<{
+            localBlock: number;
+            onSync: boolean;
+            errors: ErrorTypes[];
+        }>(router, { type: 'status' }),
+        Block.countDocuments({}),
+    ]);
 
     reply.header('Content-Type', 'application/json; charset=utf-8').send(
         JSON.stringify(
             {
                 chainId,
                 localBlock,
+                savedBlocks,
                 onSync,
                 errors,
             } as Status,

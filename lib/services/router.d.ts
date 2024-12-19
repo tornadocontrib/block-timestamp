@@ -6,6 +6,7 @@ import type { Config } from '../config';
 export interface Status {
     chainId: number;
     localBlock: number;
+    savedBlocks: number;
     onSync: boolean;
     errors: ErrorTypes[];
 }
