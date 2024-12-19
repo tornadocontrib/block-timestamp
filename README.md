@@ -2,6 +2,8 @@
 
 Built for the replacement of Blocks Subgraph, useful when querying blocks with timestamp range (usually required when drawing charts)
 
+Something like https://www.quicknode.com/docs/ethereum/qn_getBlocksInTimestampRange
+
 ## Disclaimer
 
 This API & indexer is mainly to assume blocks on the specific historic range not to index some trustworthy block DB like how etherscan does. The API doesn't have reorg detection so do not use for other purpose rather than fetching block numbers
