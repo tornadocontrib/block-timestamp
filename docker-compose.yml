@@ -1,0 +1,27 @@
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:8.0.4
+    networks:
+      - blocks
+    ports:
+      - '127.0.0.1:27017:27017'
+    volumes:
+      - './data/db:/data/db'
+
+  block-timestamp:
+    container_name: block-timestamp
+    image: block-timestamp
+    networks:
+      - blocks
+    build:
+      context: .
+    restart: always
+    env_file:
+      - ./.env
+    ports:
+      - '127.0.0.1:3000:3000'
+
+networks:
+  blocks:
+    name: blocks

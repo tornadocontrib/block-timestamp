@@ -1,0 +1,37 @@
+{
+    "name": "block-timestamp",
+    "version": "1.0.0",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "scripts": {
+        "lint": "eslint src/**/*.ts",
+        "build": "tsc --declaration",
+        "dev": "ts-node ./src/start.ts",
+        "start": "node ./lib/start.js",
+        "reset": "node ./lib/reset.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@fastify/cors": "^10.0.1",
+        "dotenv": "^16.4.7",
+        "ethers": "^6.13.4",
+        "fastify": "^5.2.0",
+        "mongoose": "^8.9.2",
+        "p-queue": "6.6.2",
+        "winston": "^3.17.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.2",
+        "eslint": "^9.17.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-import-resolver-typescript": "^3.7.0",
+        "eslint-plugin-import": "^2.31.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "prettier": "^3.4.2",
+        "ts-node": "^10.9.2",
+        "tsc": "^2.0.4",
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.18.1"
+    }
+}
